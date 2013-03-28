@@ -19,6 +19,30 @@ namespace PushSharp
 		public event DeviceSubscriptionChangedDelegate OnDeviceSubscriptionChanged;
 
 		private Dictionary<Type, List<IPushService>> registeredServices;
+
+        static PushBroker instance = null;
+        static PushBroker developmentInstance = null;
+        public static PushBroker Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new PushBroker();
+
+                return instance;
+            }
+        }
+
+        public static PushBroker DevelopmentInstance
+        {
+            get
+            {
+                if (developmentInstance == null)
+                    developmentInstance = new PushBroker();
+
+                return developmentInstance;
+            }
+        }
 		
 		public PushBroker()
 		{
